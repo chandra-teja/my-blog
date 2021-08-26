@@ -49,9 +49,15 @@ function App() {
     setPost_array((prevInputData) => {
       return [data, ...prevInputData];
     });
-
     //setDummy_posts(data);
     console.log("Updation function Success");
+  }
+
+  function deletePostHandler(postId) {
+    const updatedInitial_posts = [...Post_array].filter(
+      (deleteItem) => deleteItem.id !== postId
+    );
+    setPost_array(updatedInitial_posts);
   }
 
   return (
@@ -63,11 +69,13 @@ function App() {
         <CreateBlog InputData={UserInputData}></CreateBlog>
         {Post_array.map((Post_array) => (
           <UserPage
-          key = {Post_array.id}
+            key={Post_array.id}
+            id={Post_array.id}
             title={Post_array.title}
             content={Post_array.content}
             date={Post_array.date}
             category={Post_array.category}
+            deletepost={deletePostHandler}
           />
         ))}
       </div>
