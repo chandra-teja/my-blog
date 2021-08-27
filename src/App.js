@@ -1,6 +1,7 @@
 import "./App.css";
 import UserPage from "./components/UserPage";
 import CreateBlog from "./components/Inputs/CreateBlog";
+import SearchBlog from "./components/Inputs/SearchBlob";
 import { useState } from "react";
 
 //const [Dummy_posts, setDummy_posts] = useState([
@@ -9,8 +10,9 @@ const Dummy_posts = [
     id: "id1",
     title: "Title1",
     content: "HTML is basics of web dev",
-    date: new Date(2021, 7, 7),
+    date: new Date(2021, 8,15),
     category: "web-dev",
+    img : "Images/avatardefault_92824.png"
   },
   {
     id: "id2",
@@ -18,13 +20,15 @@ const Dummy_posts = [
     content: "CSS is one of most basics knowlodge of web dev",
     date: new Date(2021, 8, 1),
     category: "web-dev",
+    img : "Images/avatardefault_92824.png"
   },
   {
     id: "id3",
     title: "Title3",
     content: "Javascript is prerequisite of react",
-    date: new Date(2021, 9, 2),
+    date: new Date(2021, 7, 7),
     category: "web-dev",
+    img : "Images/avatardefault_92824.png"
   },
 ];
 
@@ -59,25 +63,33 @@ function App() {
     );
     setPost_array(updatedInitial_posts);
   }
-
+ 
   return (
     <div className="App">
-      <h1>Personal Blog</h1>
+      <h1 className='header'>Personal Blog</h1>
       <div>
         <h1>{userName}</h1>
-        <button id="create-button">Create Blog</button>
-        <CreateBlog InputData={UserInputData}></CreateBlog>
-        {Post_array.map((Post_array) => (
-          <UserPage
-            key={Post_array.id}
-            id={Post_array.id}
-            title={Post_array.title}
-            content={Post_array.content}
-            date={Post_array.date}
-            category={Post_array.category}
-            deletepost={deletePostHandler}
-          />
-        ))}
+        <SearchBlog />
+        <CreateBlog 
+        InputData={UserInputData}
+        />
+        
+        {Post_array.length === 0 ? (
+          <h2>No Posts Yet</h2>
+        ) : (
+          Post_array.map((Post_array) => (
+            <UserPage
+              key={Post_array.id}
+              id={Post_array.id}
+              title={Post_array.title}
+              content={Post_array.content}
+              date={Post_array.date}
+              category={Post_array.category}
+              img={Post_array.img}
+              deletepost={deletePostHandler}
+            />
+          ))
+        )}
       </div>
     </div>
   );

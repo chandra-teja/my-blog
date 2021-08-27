@@ -4,9 +4,9 @@ function PostDate(props) {
   const year = props.date.getFullYear();
   return (
     <div>
-      <p>
-        {date}.{month}.{year}
-      </p>
+     <h5>
+        -{date}.{month}.{year}
+        </h5>
     </div>
   );
 }

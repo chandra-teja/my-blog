@@ -1,0 +1,16 @@
+.InputForm {
+  background-color: white;
+  height: 350px;
+  margin: 0em 0;
+  padding: 1em 2em;
+  min-width: 200px;
+}
+
+.create-blog{
+  padding: 10px;
+  text-align: center;
+  background: #008cba;
+  margin: 1.5 0px;
+  color: aliceblue;
+  
+}
