@@ -46,72 +46,77 @@ function CreateBlog(props) {
   }
 
   return (
-    <div>
+    <div className = "row justify-content-center mb-3">
+    <div className = "col-lg-6">
       <h5 class="create-blog">Create Blog</h5>
       <form onSubmit={submitHandler} className="InputForm">
-        <div className="form-group">
-          <div className="each-element">
+          <div className="mb-2">
             <label htmlFor="post-title" className="form-label">
               Title
             </label>
             <input
+              className = "form-control"
               id="post-title"
               type="text"
               value={inputtitle}
               onInput={inputtitleHandler}
             ></input>
           </div>
-          <div className="each-element">
-            <label htmlFor="post-img">Select a Picture</label>
+          <div className="col-sm-4 mb-2 ">
+            <label htmlFor="post-img" className = "form-label">Select a Picture</label>
             <input
+              className = "form-control"
               value={inputImg}
               type="file"
               onInput={onInputImgHandler}
             ></input>
           </div>
-          <div className="each-element">
+          <div className="mb-2">
             <label htmlFor="category" className="form-label">
               Category
             </label>
             <input
+              className = "form-control"
               id="category"
               type="text"
               value={inputcategory}
               onInput={inputcategoryHandler}
             ></input>
           </div>
-          <div className="each-element">
-            <label htmlFor="date">Date</label>
+          <div className="col-sm-4 mb-2">
+            <label htmlFor="date" className = "form-label">Date</label>
             <input
+              className = "form-control"
               id="date"
               type="Date"
               value={inputdate}
               onInput={inputdateHandler}
             ></input>
           </div>
-          <div className="each-element">
-            <label htmlFor="exampleTextarea" className="form-label mt-4">
+          <div className="mb-2">
+            <label htmlFor="exampleTextarea" className="form-label">
               Content
             </label>
             <textarea
-              className="form-control"
+              className="form-control bg-light"
               name="exampleTextarea"
               type="text"
               value={inputcontent}
               onInput={inputcontentHandler}
             ></textarea>
           </div>
-          <div className="bttn-container">
-            <button
-              type="submit"
-              className="btn btn-primary su-container"
-              onClick={submitHandler}
-            >
-              Add Blog
-            </button>
+          <div style = {{textAlign:"center"}}>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={submitHandler}
+            style = {{backgroundColor : "#008cba"}}
+          >
+            Add Blog
+          </button>
           </div>
-        </div>
       </form>
+    </div>
     </div>
   );
 }

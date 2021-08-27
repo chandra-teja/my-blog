@@ -11,7 +11,7 @@ const Dummy_posts = [
     content: "HTML is basics of web dev",
     date: new Date(2021, 5, 7),
     category: "web-dev",
-    img : "Images/avatardefault_92824.png"
+    img : "Images/cycle1.jfif"
   },
   {
     id: "id2",
@@ -19,7 +19,7 @@ const Dummy_posts = [
     content: "CSS is one of most basics knowlodge of web dev",
     date: new Date(2021, 8, 1),
     category: "web-dev",
-    img : "Images/avatardefault_92824.png"
+    img : "Images/cycle1.jfif"
   },
   {
     id: "id3",
@@ -27,7 +27,7 @@ const Dummy_posts = [
     content: "Javascript is prerequisite of react",
     date: new Date(2021, 7, 7),
     category: "web-dev",
-    img : "Images/avatardefault_92824.png"
+    img : "Images/cycle1.jfif"
   },
 ];
 
@@ -46,6 +46,7 @@ function App() {
 
       //math.random() is used to generate an ID for object, which is used while updation.
       id: Math.random().toString(),
+      img : "Images/cycle1.jfif"
     };
 
     //Updating Post_array
@@ -64,16 +65,19 @@ function App() {
   }
  
   return (
-    <div className="App">
+    <div className = "row justify-content-center">
+    <div className="col-10">
       <h1 className='header'>Personal Blog</h1>
       <div>
-        <h1 className="username">{userName}</h1>
+        <h2 className="username">{userName}</h2>
         <CreateBlog 
         InputData={UserInputData}
         />
         
         {Post_array.length === 0 ? (
+          <div style = {{textAlign: "center"}}>
           <h2>No Posts Yet</h2>
+          </div>
         ) : (
           Post_array.map((Post_array) => (
             <UserPage
@@ -89,6 +93,7 @@ function App() {
           ))
         )}
       </div>
+    </div>
     </div>
   );
 }
