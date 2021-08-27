@@ -9,7 +9,7 @@ const Dummy_posts = [
     id: "id1",
     title: "Title1",
     content: "HTML is basics of web dev",
-    date: new Date(2021, 8,15),
+    date: new Date(2021, 5, 7),
     category: "web-dev",
     img : "Images/avatardefault_92824.png"
   },

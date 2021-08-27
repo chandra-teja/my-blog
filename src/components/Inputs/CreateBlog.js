@@ -47,7 +47,7 @@ function CreateBlog(props) {
 
   return (
     <div>
-      <h2 class="create-blog">Create Blog</h2>
+      <h5 class="create-blog">Create Blog</h5>
       <form onSubmit={submitHandler} className="InputForm">
         <div className="form-group">
           <div className="each-element">
