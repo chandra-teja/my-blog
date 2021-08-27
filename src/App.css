@@ -20,3 +20,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+.username{
+  text-align: center;
+}

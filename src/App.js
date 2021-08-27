@@ -1,7 +1,6 @@
 import "./App.css";
 import UserPage from "./components/UserPage";
 import CreateBlog from "./components/Inputs/CreateBlog";
-import SearchBlog from "./components/Inputs/SearchBlob";
 import { useState } from "react";
 
 //const [Dummy_posts, setDummy_posts] = useState([
@@ -34,7 +33,7 @@ const Dummy_posts = [
 
 function App() {
   //Dummy Variables
-  const userName = "User1";
+  const userName = "Welcome to personal experiences of User-name";
 
   //Declaring State for array
   const [Post_array, setPost_array] = useState(Dummy_posts);
@@ -68,8 +67,7 @@ function App() {
     <div className="App">
       <h1 className='header'>Personal Blog</h1>
       <div>
-        <h1>{userName}</h1>
-        <SearchBlog />
+        <h1 className="username">{userName}</h1>
         <CreateBlog 
         InputData={UserInputData}
         />
