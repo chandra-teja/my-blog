@@ -29,7 +29,7 @@ function UserPage(props) {
       <PostDate date={props.date}></PostDate>
       <div style = {{textAlign : "center"}} className = "mb-3">
         <button id="delete" onClick={deleteHandler} value={props.id} className = "btn btn-primary" style = {{backgroundColor : "#008cba"}}>
-          delete
+          Delete
         </button>
       </div>
     </div>
