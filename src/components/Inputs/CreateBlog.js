@@ -27,14 +27,6 @@ function CreateBlog(props) {
     imgHandler(event.target.value);
   }
 
-  function onInvalid(){
-    return(
-      <div>
-        Please enter valid content
-      </div>
-    )
-  }
-
   function submitHandler(event) {
     if(inputtitle.length >0 && inputcategory.length >0 && inputcontent.length>0 && inputdate.length >0){
       console.log('form validation');
@@ -65,6 +57,7 @@ function CreateBlog(props) {
 
   return (
     <div className = "row justify-content-center mb-3">
+      
     <div className = "col-lg-6">
       <h5 className="create-blog">Create Blog</h5>
       <form onSubmit={submitHandler} className="InputForm">
@@ -72,13 +65,13 @@ function CreateBlog(props) {
             <label htmlFor="post-title" className="form-label">
               Title
             </label>
-            <input
+            <textarea
               className = "form-control"
               id="post-title"
               type="text"
               value={inputtitle}
               onInput={inputtitleHandler}
-            ></input>
+            ></textarea>
           </div>
           <div className="col-sm-4 mb-2 ">
             <label htmlFor="post-img" className = "form-label">Select a Picture</label>
@@ -93,13 +86,13 @@ function CreateBlog(props) {
             <label htmlFor="category" className="form-label">
               Category
             </label>
-            <input
+            <textarea
               className = "form-control"
               id="category"
               type="text"
               value={inputcategory}
               onInput={inputcategoryHandler}
-            ></input>
+            ></textarea>
           </div>
           <div className="col-sm-4 mb-2">
             <label htmlFor="date" className = "form-label">Date</label>
