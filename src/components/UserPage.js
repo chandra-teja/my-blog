@@ -14,8 +14,6 @@ function UserPage(props) {
         <div className="row justify-content-center">
           <img
             className="d-block user-select-none col-11"
-            // width="50%"
-            // height="200"
             focusable="false"
             viewBox="0 0 318 180"
             preserveAspectRatio="xMidYMid slice"

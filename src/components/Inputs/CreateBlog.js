@@ -29,7 +29,7 @@ function CreateBlog(props) {
 
   //POST rqst to API
   function postRequest() {
-    fetch("http://localhost:5000/posts/", {
+    fetch("https://postapi-blog.herokuapp.com/posts", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -42,7 +42,7 @@ function CreateBlog(props) {
         date: new Date(inputdate),
       }),
     });
-    //console.log('post request to api succesfull'));
+    console.log('POST added to Db');
   }
 
   function submitHandler(event) {
@@ -57,8 +57,6 @@ function CreateBlog(props) {
       //Calling api post requesting function
       postRequest();
 
-      //calling function from App.js to send data
-      //props.InputData(PostInput);
       titleHandler("");
       categoryHandler("");
       dateHandler("");
