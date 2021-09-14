@@ -27,46 +27,59 @@ function CreateBlog(props) {
     imgHandler(event.target.value);
   }
 
+  //POST rqst to API
+  function postRequest() {
+    fetch("http://localhost:5000/posts/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: inputtitle,
+        category: inputcategory,
+        content: inputcontent,
+        date: new Date(inputdate),
+      }),
+    });
+    //console.log('post request to api succesfull'));
+  }
+
   function submitHandler(event) {
-    if(inputtitle.length >0 && inputcategory.length >0 && inputcontent.length>0 && inputdate.length >0){
-      console.log('form validation');
-    
-    const PostInput = {
-      title: inputtitle,
-      category: inputcategory,
-      content: inputcontent,
-      date: new Date(inputdate),
-      img: inputImg,
-    };
-    
-    
-    //calling function from App.js to send data
-    props.InputData(PostInput);
-    titleHandler("");
-    categoryHandler("");
-    dateHandler("");
-    contentHandler("");
-    imgHandler("");
-  }
-  else{
+    if (
+      inputtitle.length > 0 &&
+      inputcategory.length > 0 &&
+      inputcontent.length > 0 &&
+      inputdate.length > 0
+    ) {
+      console.log("form validation");
+      
+      //Calling api post requesting function
+      postRequest();
 
+      //calling function from App.js to send data
+      //props.InputData(PostInput);
+      titleHandler("");
+      categoryHandler("");
+      dateHandler("");
+      contentHandler("");
+      imgHandler("");
+    } else {
+    }
+    event.preventDefault();
   }
-  event.preventDefault();
-  }
-
 
   return (
-    <div className = "row justify-content-center mb-3">
-      
-    <div className = "col-lg-6">
-      <h5 className="create-blog">Create Blog</h5>
-      <form onSubmit={submitHandler} className="InputForm">
+    <div className="row justify-content-center mb-3">
+      <div className="col-lg-6">
+        <h5 className="create-blog">Create Blog</h5>
+        <form onSubmit={submitHandler} className="InputForm">
           <div className="mb-2">
             <label htmlFor="post-title" className="form-label">
               Title
             </label>
             <textarea
-              className = "form-control"
+              className="form-control"
               id="post-title"
               type="text"
               value={inputtitle}
@@ -74,9 +87,11 @@ function CreateBlog(props) {
             ></textarea>
           </div>
           <div className="col-sm-4 mb-2 ">
-            <label htmlFor="post-img" className = "form-label">Select a Picture</label>
+            <label htmlFor="post-img" className="form-label">
+              Select a Picture
+            </label>
             <input
-              className = "form-control"
+              className="form-control"
               value={inputImg}
               type="file"
               onInput={onInputImgHandler}
@@ -87,7 +102,7 @@ function CreateBlog(props) {
               Category
             </label>
             <textarea
-              className = "form-control"
+              className="form-control"
               id="category"
               type="text"
               value={inputcategory}
@@ -95,9 +110,11 @@ function CreateBlog(props) {
             ></textarea>
           </div>
           <div className="col-sm-4 mb-2">
-            <label htmlFor="date" className = "form-label">Date</label>
+            <label htmlFor="date" className="form-label">
+              Date
+            </label>
             <input
-              className = "form-control"
+              className="form-control"
               id="date"
               type="Date"
               value={inputdate}
@@ -116,18 +133,18 @@ function CreateBlog(props) {
               onInput={inputcontentHandler}
             ></textarea>
           </div>
-          <div style = {{textAlign:"center"}}>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={submitHandler}
-            style = {{backgroundColor : "#008cba"}}
-          >
-            Add Blog
-          </button>
+          <div style={{ textAlign: "center" }}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={submitHandler}
+              style={{ backgroundColor: "#008cba" }}
+            >
+              Add Blog
+            </button>
           </div>
-      </form>
-    </div>
+        </form>
+      </div>
     </div>
   );
 }
