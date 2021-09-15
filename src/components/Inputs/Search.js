@@ -1,21 +1,20 @@
 import { useState } from "react";
 
-
-
 function Search(props) {
   const [searchInput, setSearchInput] = useState("");
 
   function searchInputHandler(event) {
     setSearchInput(event.target.value);
   }
-  function searchbuttonHandler(event){
-     props.searchData(searchInput);
-      event.preventDefault();
+  function searchbuttonHandler(event) {
+    props.searchData(searchInput);
+    event.preventDefault();
   }
 
-  function closeSearchHandler(event){
-      props.close();
-      console.log('close search')
+  function closeSearchHandler(event) {
+    setSearchInput("");
+    props.close();
+    console.log("close search");
   }
 
   return (
@@ -26,8 +25,8 @@ function Search(props) {
         value={searchInput}
         onChange={searchInputHandler}
       ></textarea>
-      <button onClick={searchbuttonHandler} >Search</button>
-      <button  onClick={closeSearchHandler}>X</button>
+      <button onClick={searchbuttonHandler}>Search</button>
+      <button onClick={closeSearchHandler}>X</button>
     </div>
   );
 }

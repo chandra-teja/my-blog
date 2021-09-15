@@ -10,9 +10,6 @@ function App() {
   //Declaring State for array
   const [Post_array, setPost_array] = useState([]);
 
-  //declare search state
-  const [searchKey, setsearchKey] = useState("");
-
   //Dummy Variables
   const userName = "Welcome to personal experiences of User-name";
 
@@ -52,17 +49,40 @@ function App() {
   }
 
   async function deleteApi(postId) {
-    await fetch(`https://postapi-blog.herokuapp.com/posts${postId}`, {
+    await fetch(`https://postapi-blog.herokuapp.com/posts/${postId}`, {
       method: "DELETE",
     })
       .then(() => console.log("deletion from API succesfull"))
       .catch((err) => console.log("ERROR in DELETEING FRoM DB", err));
   }
 
+  async function searchPosts(searchInputData) {
+    await fetch(`https://postapi-blog.herokuapp.com/posts/${searchInputData}`, {
+      method: "GET",
+    })
+      .then((responce) => {
+        return responce.json();
+      })
+      .then((data) => {
+        const dataApi = data.map((postdata) => {
+          return {
+            id: postdata._id,
+            title: postdata.title,
+            content: postdata.content,
+            category: postdata.category,
+            date: postdata.date,
+            img: "Images/cycle1.jfif",
+          };
+        });
+        setPost_array(dataApi);
+      });
+  }
+
   function searchBar(searchInputData) {
-    setsearchKey(searchInputData);
+    searchPosts(searchInputData);
   }
   function closeSearch() {
+    postHandler();
     console.log("Close search");
   }
 
@@ -78,7 +98,7 @@ function App() {
             <Switch>
               <Route
                 path="/createblog"
-                component={() => <CreateBlog/>}
+                component={() => <CreateBlog />}
               ></Route>
 
               <Route
@@ -87,7 +107,6 @@ function App() {
                   <UserBlog
                     dataArray={Post_array}
                     deletepost={deletePostHandler}
-                    search={searchKey}
                   ></UserBlog>
                 )}
               ></Route>
